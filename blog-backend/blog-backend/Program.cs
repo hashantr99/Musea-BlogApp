@@ -1,4 +1,5 @@
 using blog_backend.Data;
+using blog_backend.Entity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,8 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration["connectionstring"];
 builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<IRepository<Blog>, SqlRepository<Blog>>();
+builder.Services.AddScoped<IRepository<Category>, SqlRepository<Category>>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
