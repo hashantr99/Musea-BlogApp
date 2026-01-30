@@ -11,7 +11,7 @@ namespace blog_backend.Controllers
     {
         private readonly IRepository<Blog> _blogRepository;
 
-        public BlogsController(IRepository<Blog> blogRepository) 
+        public BlogsController(IRepository<Blog> blogRepository)
         {
             _blogRepository = blogRepository;
         }
@@ -21,6 +21,13 @@ namespace blog_backend.Controllers
         {
             var blogs = await _blogRepository.GetAll();
             return Ok(blogs);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetBlog([FromRoute] int id)
+        {
+            var blog = await _blogRepository.GetById(id);
+            return Ok(blog);
         }
     }
 }
