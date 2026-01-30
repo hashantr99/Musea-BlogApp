@@ -29,5 +29,12 @@ namespace blog_backend.Controllers
             var blog = await _blogRepository.GetById(id);
             return Ok(blog);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> AddBlog([FromBody] Blog model)
+        {
+            await _blogRepository.AddAsync(model);
+            return Ok(model);
+        }
     }
 }
