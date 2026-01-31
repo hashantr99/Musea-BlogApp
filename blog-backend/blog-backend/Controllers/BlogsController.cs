@@ -34,6 +34,21 @@ namespace blog_backend.Controllers
         public async Task<ActionResult> AddBlog([FromBody] Blog model)
         {
             await _blogRepository.AddAsync(model);
+            await _blogRepository.SaveChangesAsync();
+            return Ok(model);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateBlog([FromRoute] int id, [FromBody] Blog model)
+        {
+            var blog = await _blogRepository.GetById(id);
+            blog.Description = model.Description;
+            blog.Title = model.Title;
+            blog.Content = model.Content;
+            blog.IsFeatured = model.IsFeatured;
+            blog.Image = model.Image;
+            _blogRepository.Update(blog);
+            await _blogRepository.SaveChangesAsync();
             return Ok(model);
         }
     }
