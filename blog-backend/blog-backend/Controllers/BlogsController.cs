@@ -51,5 +51,13 @@ namespace blog_backend.Controllers
             await _blogRepository.SaveChangesAsync();
             return Ok(model);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteBlog([FromRoute] int id)
+        {
+            await _blogRepository.DeleteAsync(id);
+            await _blogRepository.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
