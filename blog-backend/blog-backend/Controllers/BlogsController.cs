@@ -59,5 +59,12 @@ namespace blog_backend.Controllers
             await _blogRepository.SaveChangesAsync();
             return Ok();
         }
+
+        [HttpGet("{featured}")]
+        public async Task<ActionResult> GetBlogsFeatureList()
+        {
+            var blogs = await _blogRepository.GetAll(x=>x.IsFeatured==true);
+            return Ok(blogs);
+        }
     }
 }
