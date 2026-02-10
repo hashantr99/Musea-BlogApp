@@ -4,3 +4,14 @@
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos quaerat corporis, neque voluptatem maiores laboriosam eveniet possimus, nulla facere excepturi, fuga modi distinctio! Facilis obcaecati, adipisci ea aperiam quasi blanditiis.
     </p>
 </div>
+<div class="flex flex-col items-center px-20 mb-10">
+    <h2 class="text-xl font-bold">Features Blogs</h2>
+    <div class="flex flex-wrap gap-4">
+      @for (blog of featuredBlogs; track $index) {
+        <div class="w-3/12">
+            <app-blog-card [blog]="blog"></app-blog-card>
+
+        </div>
+      }
+    </div>
+</div>
