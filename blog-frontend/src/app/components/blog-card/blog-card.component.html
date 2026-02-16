@@ -1,7 +1,7 @@
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{blog.title}}</mat-card-title>
+    <mat-card-title>{{blog.title}} <span class="bg-green-500 text-white font-semibold text-xs p-1 rounded-md shadow-md">{{getCategoryName()}}</span></mat-card-title>
   </mat-card-header>
   <!-- <img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
   <img mat-card-image [src]="blog.image" alt="Photo of a Shiba Inu">
