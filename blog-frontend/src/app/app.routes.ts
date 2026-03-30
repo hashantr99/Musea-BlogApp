@@ -5,6 +5,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import { AboutComponent } from './components/about/about.component';
 import { ManageBlogsComponent } from './components/admin/manage-blogs/manage-blogs.component';
 import { BlogFormComponent } from './components/admin/blog-form/blog-form.component';
+import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     {
@@ -25,14 +27,21 @@ export const routes: Routes = [
     },
     {
         path: "admin/blogs",
-        component: ManageBlogsComponent
+        component: ManageBlogsComponent,
+        canActivate: [authGuard]
     },
     {
         path: "admin/blog/create",
-        component: BlogFormComponent
+        component: BlogFormComponent,
+        canActivate: [authGuard]
     },
     {
         path: "admin/blog/update/:id",
-        component: BlogFormComponent
+        component: BlogFormComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path: "login",
+        component: LoginComponent
     }
 ];

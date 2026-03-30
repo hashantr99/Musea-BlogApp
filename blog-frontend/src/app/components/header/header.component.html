@@ -4,6 +4,8 @@
   <ul class="flex gap-4">
     <li><a routerLink="/blogs" class="text-white">Blogs</a></li>
     <li><a routerLink="/about" class="text-white">Aboutus</a></li>
+    @if(authService.isLoggedIn) {
     <li><a routerLink="/admin/blogs" class="text-white">Manage Blogs</a></li>
+    }
   </ul>
 </div>

@@ -19,7 +19,7 @@ export class BlogService {
     return this.http.get<Blog>(environment.apiUrl+"/api/Blogs/"+id);
   }
   deleteBlog(id: number) {
-    return this.http.delete(environment.apiUrl+"/api/Blogs"+id);
+    return this.http.delete(environment.apiUrl+"/api/Blogs/"+id);
   }
   addBlog(blog: Blog) {
     return this.http.post(environment.apiUrl+"/api/Blogs", blog);

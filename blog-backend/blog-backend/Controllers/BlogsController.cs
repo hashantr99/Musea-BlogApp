@@ -1,6 +1,7 @@
 ﻿using blog_backend.Data;
 using blog_backend.Dto;
 using blog_backend.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +32,7 @@ namespace blog_backend.Controllers
             return Ok(blog);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> AddBlog([FromBody] BlogDto model)
         {
@@ -48,6 +50,7 @@ namespace blog_backend.Controllers
             return Ok(model);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateBlog([FromRoute] int id, [FromBody] BlogDto model)
         {
@@ -62,6 +65,7 @@ namespace blog_backend.Controllers
             return Ok(model);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBlog([FromRoute] int id)
         {
